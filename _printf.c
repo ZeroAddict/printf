@@ -8,59 +8,77 @@ int _printf(const char *format, ...)
 {
 	char *str;
 	int len_format = 0;
+	int count = 0;
 	va_list listname;
 
-	va_start(listname, format);
-
-	for (; format[len_format] != '\0'; len_format++)
+	if (!format)
+		return (-1);
+	if (!format[0])
+		return (0);
+	else
 	{
-		if (format[len_format] == '%')/*format spec*/
+		va_start(listname, format);
+
+		for (; format[len_format] != '\0'; len_format++)
 		{
-			len_format++;
+			if (format[len_format] == '%') { /*format spec*/
+				len_format++;
 				if (format[len_format] == '%')
 				{
 					_putchar('%');
 				}
 				else
-				{	
+				{
 					switch (format[len_format])
 					{
 						case 'c': /* character */
 							_putchar(va_arg(listname, int));
+							count++;
 							break;
 						case 's': /*string */
 							str = va_arg(listname, char *);
-							print_strings(str);
+							count += print_strings(str);
 							break;
-				/*default: Unknown specifier*/
-					/*_putchar(format[len_format]);*/
-					/*len_format++;*/
-					/*break;*/
+							/*default: Unknown specifier*/
+							/*_putchar(format[len_format]);*/
+							/*len_format++;*/
+							/*break;*/
 					}
 				}
+			}
+			else
+				_putchar(format[len_format]);
+			count++;
 		}
-		else
-			_putchar(format[len_format]);
-
 	}
 	va_end(listname);
-	return (len_format);
+	/*printf("%d\n", count);*/
+	return (count);
 }
 /**
  * print_strings - function prints string
  * @str: string to be printed
- * Return: void
+ * Return: prints string and character count
  */
-void print_strings(char *str)
+int print_strings(char *str)
 {
 	int j;
+	int c;
 
 	j = 0;
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
+	c = 0;
+
 	while (str[j])
 	{
 		_putchar(str[j]);
 		j++;
+		c++;
 	}
+	return(c);
 }
 
 /**
@@ -70,7 +88,6 @@ void print_strings(char *str)
  *Return: return 'c'
  */
 
-int _putchar(char c)
-{
+int _putchar(char c) {
 	return (write(1, &c, 1));
 }
