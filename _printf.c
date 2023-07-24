@@ -7,26 +7,21 @@
 int _printf(const char *format, ...)
 {
 	char *str;
-	int len_format = 0;
-	int count = 0;
+	int len_format = 0, count = 0;
 	va_list listname;
 
 	if (!format)
 		return (-1);
 	if (!format[0])
 		return (0);
-	else
 	{
 		va_start(listname, format);
-
 		for (; format[len_format] != '\0'; len_format++)
 		{
-			if (format[len_format] == '%') { /*format spec*/
-				len_format++;
+			if (format[len_format] == '%')
+			{ /*format spec*/ len_format++;
 				if (format[len_format] == '%')
-				{
 					_putchar('%');
-				}
 				else
 				{
 					switch (format[len_format])
@@ -39,10 +34,6 @@ int _printf(const char *format, ...)
 							str = va_arg(listname, char *);
 							count += print_strings(str);
 							break;
-							/*default: Unknown specifier*/
-							/*_putchar(format[len_format]);*/
-							/*len_format++;*/
-							/*break;*/
 					}
 				}
 			}
@@ -51,8 +42,7 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-	va_end(listname);
-	/*printf("%d\n", count);*/
+	va_end(listname); /*printf("%d\n", count);*/
 	return (count);
 }
 /**
@@ -78,7 +68,7 @@ int print_strings(char *str)
 		j++;
 		c++;
 	}
-	return(c);
+	return (c);
 }
 
 /**
@@ -88,6 +78,7 @@ int print_strings(char *str)
  *Return: return 'c'
  */
 
-int _putchar(char c) {
+int _putchar(char c)
+{
 	return (write(1, &c, 1));
 }
