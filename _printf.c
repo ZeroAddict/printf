@@ -17,23 +17,31 @@ int _printf(const char *format, ...)
 		if (format[len_format] == '%')/*format spec*/
 		{
 			len_format++;
-			switch (format[len_format])
-			{
-				case 'c': /* character */
-					_putchar(va_arg(listname, int));
-					break;
-				case 's': /*string */
-					str = va_arg(listname, char *);
-					print_strings(str);
-				break;
-				default: /*Unknown specifier*/
-				_putchar(format[len_format]);
-				len_format++;
-				continue;
-			}
+				if (format[len_format] == '%')
+				{
+					_putchar('%');
+				}
+				else
+				{	
+					switch (format[len_format])
+					{
+						case 'c': /* character */
+							_putchar(va_arg(listname, int));
+							break;
+						case 's': /*string */
+							str = va_arg(listname, char *);
+							print_strings(str);
+							break;
+				/*default: Unknown specifier*/
+					/*_putchar(format[len_format]);*/
+					/*len_format++;*/
+					/*break;*/
+					}
+				}
 		}
 		else
-		_putchar(format[len_format]);
+			_putchar(format[len_format]);
+
 	}
 	va_end(listname);
 	return (len_format);
@@ -45,9 +53,9 @@ int _printf(const char *format, ...)
  */
 void print_strings(char *str)
 {
-int j;
+	int j;
 
-j = 0;
+	j = 0;
 	while (str[j])
 	{
 		_putchar(str[j]);
