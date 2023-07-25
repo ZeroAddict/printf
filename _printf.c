@@ -14,7 +14,6 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (!format[0])
 		return (0);
-	{
 		va_start(listname, format);
 		for (; format[len_format] != '\0'; len_format++)
 		{
@@ -26,21 +25,24 @@ int _printf(const char *format, ...)
 				else
 				{
 					switch (format[len_format])
-						case 'c': /* character */
+					{
+						case 'c':
 							_putchar(va_arg(listname, int));
 							count++;
-						case 's': /*string */
+							break;
+						case 's':
 							str = va_arg(listname, char *);
 							count += print_strings(str);
+							break;
 						case '\0':
 						case ' ':
 							return (-1);
+					}
 				}
 			}
 			else
 				_putchar(format[len_format]);
 			count++;
-		}
 	}
 	va_end(listname); /*printf("%d\n", count);*/
 	return (count);
