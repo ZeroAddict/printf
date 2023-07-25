@@ -26,19 +26,15 @@ int _printf(const char *format, ...)
 				else
 				{
 					switch (format[len_format])
-					{
 						case 'c': /* character */
 							_putchar(va_arg(listname, int));
 							count++;
-							break;
 						case 's': /*string */
 							str = va_arg(listname, char *);
 							count += print_strings(str);
-							break;
 						case '\0':
 						case ' ':
 							return (-1);
-					}
 				}
 			}
 			else
