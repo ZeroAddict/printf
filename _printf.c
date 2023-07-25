@@ -19,7 +19,8 @@ int _printf(const char *format, ...)
 		for (; format[len_format] != '\0'; len_format++)
 		{
 			if (format[len_format] == '%')
-			{ /*format spec*/ len_format++;
+			{
+				len_format++;
 				if (format[len_format] == '%')
 					_putchar('%');
 				else
@@ -34,6 +35,9 @@ int _printf(const char *format, ...)
 							str = va_arg(listname, char *);
 							count += print_strings(str);
 							break;
+						case '\0':
+						case ' ':
+							return (-1);
 					}
 				}
 			}
