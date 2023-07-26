@@ -11,8 +11,8 @@ int print_strings(char *str)
 
 	if (!str)
 	{
-		str = "(null))
-
+		str = "(null)";
+	}
 	for (; *str != '\0'; str++)
 	{
 		_putchar(*str);

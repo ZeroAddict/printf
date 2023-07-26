@@ -1,5 +1,4 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
  * _printf - function to print to stdout
@@ -12,8 +11,6 @@ int _printf(const char *format, ...)
 	int len_format = 0, count = 0;
 	va_list listname;
 
-	if (!format || format[len_format] == '\0' /*|| (format[len_format] == ' ')*/)
-		return (-1);
 	if (!format[0])
 		return (0);
 	va_start(listname, format);
@@ -28,20 +25,23 @@ int _printf(const char *format, ...)
 				count++;
 			}
 			else
-				switch (format[len_format])
-				{
-					case 'c': /* character */
-						_putchar(va_arg(listname, int));
-						count++;
-						break;
-					case 's': /*string */
-						str = va_arg(listname, char *);
-						count += print_strings(str);
-						break;
-				}
+			{
+			switch (format[len_format])
+			{
+				case 'c': /* character */
+				_putchar(va_arg(listname, int));
+				count++;
+				break;
+				case 's': /*string */
+				str = va_arg(listname, char *);
+				count += print_strings(str);
+			}
+			if (!format || format[len_format] == '\0' || format[len_format] == ' ')
+			return (-1);
+			}
 		}
 		else
-			_putchar(format[len_format]);
+		_putchar(format[len_format]);
 			count++;
 	}
 	va_end(listname); /*printf("%d\n", count);*/
