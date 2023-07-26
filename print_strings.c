@@ -10,14 +10,12 @@ int print_strings(char *str)
 	int count = 0;
 
 	if (!str)
-		{
-			str = "(null)";
-		}
+	{
+		str = "(null))
 
 	for (; *str != '\0'; str++)
-		{
-			_putchar(*str);
-			count++;
-		}
+	{
+		_putchar(*str);
+	}
 	return (count);
 }

@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	int len_format = 0, count = 0;
 	va_list listname;
 
-	if (!format)
+	if (!format || format[len_format] == '\0' /*|| (format[len_format] == ' ')*/)
 		return (-1);
 	if (!format[0])
 		return (0);
@@ -28,7 +28,6 @@ int _printf(const char *format, ...)
 				count++;
 			}
 			else
-			{
 				switch (format[len_format])
 				{
 					case 'c': /* character */
@@ -38,12 +37,8 @@ int _printf(const char *format, ...)
 					case 's': /*string */
 						str = va_arg(listname, char *);
 						count += print_strings(str);
-						case '\0':
-						case ' ':
 						break;
-						return (-1);
 				}
-			}
 		}
 		else
 			_putchar(format[len_format]);
