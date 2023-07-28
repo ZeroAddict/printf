@@ -19,3 +19,4 @@ int print_strings(char *str)
 	}
 	return (count);
 }
+
