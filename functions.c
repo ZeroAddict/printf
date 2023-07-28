@@ -73,8 +73,8 @@ int print_strings(va_list listname)
 	int c;
 	char *str;
 
-	str = va_arg(listname, char *)
-		j = 0;
+	str = va_arg(listname, char *);
+	j = 0;
 	if (str == NULL)
 	{
 		str = "(null)";

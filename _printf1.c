@@ -11,10 +11,11 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 	va_list listname;
 
+	if (!format)
+		return (-1);
 	if (!format[0])
 		return (0);
 	va_start(listname, format);
-
 	for (; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -41,4 +42,6 @@ int _printf(const char *format, ...)
 		count++;
 	}
 	va_end(listname); /*printf("%d\n", count);*/
+
+	return (count);
 }

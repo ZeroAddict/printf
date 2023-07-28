@@ -7,7 +7,6 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
-
 int print_string(va_list);
 int _putchar(va_list);
 int print_decimals(va_list);
@@ -26,5 +25,4 @@ typedef struct format_specifier
 	char cp;
 	int (*handleFunction)(char *s);
 } cp_t;
-
 #endif
