@@ -8,14 +8,15 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
+	int i, count = 0;
 	va_list listname;
 
+	if (!format)
+		return (-1);
 	if (!format[0])
 		return (0);
 	va_start(listname, format);
-
-	for (; format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -23,10 +24,6 @@ int _printf(const char *format, ...)
 			if (format[i] == '%')
 			{
 				_putchar2('%');
-			}
-			else if (format[i] == '\0' || format[i] == ' ')
-			{
-				return (-1);
 			}
 			else
 			{
@@ -37,8 +34,11 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+		{
 			_putchar2(format[i]);
-		count++;
+			count++;
+		}
 	}
-	va_end(listname); /*printf("%d\n", count);*/
+	va_end(listname);
+	return (count);
 }

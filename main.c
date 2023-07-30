@@ -17,12 +17,12 @@ int main(void)
 	len2 = _printf("Let's try to printf a simple sentence.\n");
 	_printf("Character:[%c]\n", 'H');
 	len2 = _printf("Character:[%c]\n", 'H');
-	_printf("String:[%s]\n", "I am a string !");
+	_printf("Len:[%d]\n", len2);
+	/*_printf("String:[%s]\n", "I am a string !");*/
 	/*printf("String:[%s]\n", "I am a string !");*/
 	len2 = _printf("Percent:[%%]\n");
 	/*len = printf("Percent:[%%]\n");*/
 	/*_printf("Len:[%d]\n", len);*/
-	printf("Len:[%d]\n", len2);
 	_printf("%c %d \n", 'n', 10);
 	_printf("%c %c \n", 'u', 't');
 	_printf("%c\n", 7);
