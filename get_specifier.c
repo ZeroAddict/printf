@@ -19,6 +19,7 @@ int (*get_specifier(char c))(va_list)
 	{
 		if (c == fs[i].cp)
 			return (fs[i].print_function);
+        i++;
 	}
 	return (NULL);
 }
